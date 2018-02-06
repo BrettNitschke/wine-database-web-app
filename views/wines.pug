@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  if (user)
+    .container
+    .section.columns
+      .column.is-8.is-offset-2
+        h2.title.has-text-centered
+          | Wines in Database
+        table.table.is-bordered.is-striped.is-narrow
+          thead
+            tr
+              th Winery
+              th Name
+              th Vintage
+              th add
+            tbody
+            each wine in wineList
+              tr
+                td= wine.winery
+                td= wine.name
+                td= wine.vintage
+                td= 'add wine'
+  if (!user)
+    .container
+    .section.columns
+      .column.is-8.is-offset-2
+        h2.title.has-text-centered
+          | Wines in Database
+        table.table.is-bordered.is-striped.is-narrow
+          thead
+            tr
+              th Winery
+              th Name
+              th Vintage
+            tbody
+            each wine in wineList
+              tr
+                td= wine.winery
+                td= wine.name
+                td= wine.vintage
