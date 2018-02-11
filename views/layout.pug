@@ -15,7 +15,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') Node.js Auth
+          a.navbar-brand(href='/') Cellar
         div.collapse.navbar-collapse(id='bs-example-navbar-collapse-1')
           ul.nav.navbar-nav.navbar-right
             if (!user)
@@ -29,7 +29,9 @@ html
                 a(href='/addWine') Add a Wine
             if (user)
               li
-                a Welcome #{user.name}
+                a Welcome #{user.username}
+              li
+                a(href='/cellar') My Cellar
               li
                 a(href='/wines') Wines in Database
               li

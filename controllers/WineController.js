@@ -38,6 +38,13 @@ winesController.doAddWine = function(req, res){
           });
 }
 
+//add wine to users cellar
+winesController.addToCellar = function(req, res){
+  var wineID = req.params.wine_id;
+  console.log(wineID);
+  res.render('cellar', {user: req.user, wineID: wineID});
+}
+
 String.prototype.toProperCase = function () {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };

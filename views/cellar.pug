@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  if (user)
+    .container
+    .section.columns
+      .column.is-8.is-offset-2
+        h2.title.has-text-centered
+          | Cellar for #{user.username}
+        table.table.is-bordered.is-striped.is-narrow
+          thead
+            tr
+              th Winery
+              th Name
+              th Vintage
+            tbody
+            each wine in wineList
+              tr
+                td #{wine.winery}
+                td #{wine.name}
+                td #{wine.vintage}

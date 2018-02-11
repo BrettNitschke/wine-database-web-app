@@ -17,10 +17,11 @@ block content
             tbody
             each wine in wineList
               tr
-                td= wine.winery
-                td= wine.name
-                td= wine.vintage
-                td= 'add wine'
+                td #{wine.winery}
+                td #{wine.name}
+                td #{wine.vintage}
+                td
+                  button(method='get' onclick="location.href='/addToCellar/" + wine._id + "'") add to cellar
   if (!user)
     .container
     .section.columns

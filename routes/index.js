@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var auth = require('../controllers/AuthController');
 var vino = require('../controllers/WineController');
+var cellar = require('../controllers/CellarController');
 
 //auth routes
 router.get('/', auth.home);
@@ -22,6 +23,11 @@ router.get('/wines', vino.wines);
 router.get('/addWine', vino.addWine);
 
 router.post('/addWine', vino.doAddWine);
+
+//cellar routes
+router.get('/addToCellar/:wine_id', cellar.addToCellar);
+
+router.get('/cellar', cellar.getCellar);
 
 
 module.exports = router;
