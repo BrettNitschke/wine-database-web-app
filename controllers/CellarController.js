@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var User = require('../models/User');
 var request = require('request');
+var help = require('../helpers/Helpers');
 var celHelp = require('../helpers/CellarHelpers');
+
 var cellarController = {};
 
 
@@ -11,11 +13,14 @@ cellarController.getCellar = function(req, res) {
   query.exec(function(err, data){
     if (err)
       res.send(err);
-    //var wines = celHelp.makeURLs(data.wines);
-    celHelp.fetchUserWines(data.wines, req, res);
-    //res.render('cellar', {user: req.user, wineList: wines});
+    celHelp.fetchUserWines(data.wines, function(wineList){
+      wineList.sort(help.by("winery", help.by("name", help.by("vintage"))));
+      res.render('cellar', {user: req.user, wineList: wineList});
+    });
   });
 };
+
+
 //add wine to users cellar
 cellarController.addToCellar = function(req, res){
   var wineID = req.params.wine_id;
@@ -31,7 +36,7 @@ cellarController.addToCellar = function(req, res){
 };
 
 
-  //res.render('cellar', {user: req.user, wineID: wineID});
+
 
 
 
